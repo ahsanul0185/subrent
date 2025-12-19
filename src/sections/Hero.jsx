@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { AnimatePresence, motion } from "motion/react";
 import { GoArrowRight, GoChevronLeft, GoChevronRight } from "react-icons/go";
 
@@ -80,7 +80,8 @@ const Hero = () => {
         effect="fade"
         onSlideChange={(slides) => setActiveIndex(slides.realIndex)}
         loop
-        modules={[EffectFade, Navigation, Pagination]}
+        autoplay
+        modules={[EffectFade, Navigation, Pagination, Autoplay]}
         className="mySwiper h-full"
       >
         {slides.map((slide, index) => (
@@ -98,11 +99,11 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 left-0 -translate-y-1/2  cursor-pointer z-40 group hover:text-white" onClick={handlePrev}>
+      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 left-2 -translate-y-1/2  cursor-pointer z-40 group hover:text-white" onClick={handlePrev}>
         <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-primary -z-10`} />
         <GoChevronLeft  className="z-10"/>
       </button>
-      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer z-40 group hover:text-white" onClick={handleNext}>
+      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer z-40 group hover:text-white" onClick={handleNext}>
         <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-primary -z-10`} />
         <GoChevronRight className="z-10"/>
       </button>

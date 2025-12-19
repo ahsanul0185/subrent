@@ -3,16 +3,17 @@
 
 @theme {
   --color-primary : #171aa7;
+  --color-primary-dark : #092553;
   --color-secondary : #c0beff;
 }
 
 
 .default-width {
-  @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16;
+  @apply max-w-350 mx-auto px-6 md:px-12 lg:px-16;
 }
 
 .section-y-padding {
-	@apply py-16 my-20;
+	@apply py-16 my-16;
 }
 
 body {
@@ -33,3 +34,10 @@ body {
   display: block;
   width: 100%;
 }
+
+
+
+
+
+
+
