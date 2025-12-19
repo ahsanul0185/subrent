@@ -1,0 +1,44 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const navLinks = [
+    {
+        text : "Qui sommes-nous ?",
+        hash : 'who-are-we'
+    },
+    {
+        text : "Pourquoi nous choisir ?",
+        hash : 'who-choose-us'
+    },
+    {
+        text : "Notre méthode",
+        hash : 'our-method'
+    },
+        {
+        text : "Nos locataires",
+        hash : 'our-tenants'
+    },
+    {
+        text : "Contactez-nous",
+        hash : 'contact-us'
+    },
+]
+
+const Navbar = () => {
+  return (
+    <nav>
+        <div className='default-width flex items-center justify-between gap-6 py-4'>
+            <img src="./logo.jpeg" className='w-12' alt="Subrent logo" />
+            {/* <h2>Logo Here</h2> */}
+            <ul className='flex gap-5'>
+               {navLinks.map((item, idx) => <Link to={`#${item.hash}`} key={idx} className='flex flex-col items-center text-gray-800 hover:text-primary justify-center gap-0.5 group'>
+                <span>{item.text}</span>
+                <span className={`w-full h-0.5 bg-primary opacity-0 invisible translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 duration-200 ease-out`}/>
+               </Link>)}
+            </ul>
+        </div>
+    </nav>
+  )
+}
+
+export default Navbar
