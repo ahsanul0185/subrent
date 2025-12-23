@@ -1,36 +1,39 @@
 import React from "react";
-import img_1 from "../assets/about-1-1536x976.webp";
+import img_1 from "../assets/img4.jpg";
 import img_2 from "../assets/about-2-768x768.webp";
 import { BsCheck } from "react-icons/bs";
 import { motion } from "motion/react";
 
 import Button from "../components/Button";
+import { useTranslation } from "../contexts/useTranslation";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.17,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 54,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const WhoAreWe = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.17,
-        delayChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 54,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
+  const { t } = useTranslation();
 
   return (
     <div className="default-width section-y-padding flex gap-28 flex-col lg:flex-row items-start">
@@ -65,40 +68,45 @@ const WhoAreWe = () => {
             variants={itemVariants}
             className="text-[2.6rem] leading-12"
           >
-            {" "}
-            We become your perfect tenant!
+            {t(
+              "We become your perfect tenant!***Nous devenons votre locataire parfait !"
+            )}
           </motion.h1>
 
-          <div className="mt-6">
-            <motion.p  variants={itemVariants} className="text-gray-600">
-              Non anim in pariatur in ex excepteur commodo do officia amet
-              incididunt ullamco nostrud aliquip minim magna esse dolore ea quis
-              laborum eiusmod dolore ex pariatur ut cillum non excepteur irure
-              dolore reprehenderit dolor id ut ut in ut occaecat culpa minim
-              dolore elit non ut tempor ut in ex ut tempor.
+          <div className="mt-6 space-y-4">
+            <motion.p variants={itemVariants} className="text-gray-600">
+              {t(
+                "The ideal solution to rent out your property with complete peace of mind.***La solution idéale pour louer votre bien en toute tranquillité"
+              )}
             </motion.p>
-            <motion.ul  variants={itemVariants} className="mt-5 text-gray-900">
-              <li className="flex items-center gap-0.5">
-                <BsCheck className="text-primary text-2xl mt-0.5" />{" "}
-                Contemporary design with high ceilings
-              </li>
-              <li className="flex items-center gap-0.5">
-                <BsCheck className="text-primary text-2xl mt-0.5" /> Spacious
-                bedrooms with built-in wardrobes
-              </li>
-              <li className="flex items-center gap-0.5">
-                <BsCheck className="text-primary text-2xl mt-0.5" /> Fully
-                integrated smart home system
-              </li>
-              <li className="flex items-center gap-0.5">
-                <BsCheck className="text-primary text-2xl mt-0.5" /> Gagarage
-                with electric vehicle charging port
-              </li>
-            </motion.ul>
+
+            <motion.p variants={itemVariants} className="text-gray-600">
+              {t(
+                "Entrust us with your property and receive a fixed, guaranteed monthly rent, defined from the moment the contract is signed. No management fees, no unpleasant surprises: you know your income in advance.***Confiez-nous votre logement et percevez un loyer mensuel fixe et garanti, défini dès la signature du contrat. Aucun frais de gestion, aucune mauvaise surprise : vous connaissez vos revenus à l’avance."
+              )}
+            </motion.p>
+
+            <motion.p variants={itemVariants} className="text-gray-600">
+              {t(
+                "We take care of the entire rental management process, from legally compliant listings to daily short-term rental management. You have nothing to manage — we take care of everything.***Nous prenons en charge l’intégralité de la gestion locative, de la mise en ligne conforme à la réglementation jusqu’au suivi quotidien des locations courte durée. Vous n’avez rien à gérer, nous nous occupons de tout."
+              )}
+            </motion.p>
+
+            <motion.p variants={itemVariants} className="text-gray-600">
+              {t(
+                "Your property joins a portfolio of homes designed for professional clients and demanding travelers, ensuring reliability, quality, and respect for the property.***Votre bien rejoint un portefeuille de logements destinés à une clientèle professionnelle et des voyageurs exigeants, garantissant sérieux, qualité et respect du logement."
+              )}
+            </motion.p>
+
+            <motion.p variants={itemVariants} className="text-gray-600">
+              {t(
+                "You enjoy regular, secure, hassle-free income with complete peace of mind.***Vous profitez ainsi de revenus réguliers, sécurisés et sans contrainte, en toute sérénité."
+              )}
+            </motion.p>
           </div>
 
           <motion.div variants={itemVariants}>
-            <Button>Contact us</Button>
+            <Button>{t("Contact us***Contactez-nous")}</Button>
           </motion.div>
         </div>
       </motion.div>

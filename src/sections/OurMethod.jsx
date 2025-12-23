@@ -4,52 +4,63 @@ import { CheckCircle, Home, FileText, Users, Sparkles, Calendar } from 'lucide-r
 import { motion } from 'framer-motion';
 import Title from '../components/Title';
 import Button from '../components/Button';
+import { useTranslation } from '../contexts/useTranslation';
 
 
- const steps = [
-    {
-      id: 1,
-      title: "Appointment Making",
-      description: "Initial meeting and presentation of our rental solution."
-    },
-    {
-      id: 2,
-      title: "House Visit",
-      description: "We arrange a visit to your property to determine its potential."
-    },
-    {
-      id: 3,
-      title: "Signing of the Lease",
-      description: "After the inventory of fixtures, we will sign a lease so that we become your tenants."
-    },
-    {
-      id: 4,
-      title: "Resident Search",
-      description: "Putting your property on the market and strictly selecting future tenants."
-    },
-    {
-      id: 5,
-      title: "Furniture & Decoration",
-      description: "Our team can furnish and decorate your home if needed."
-    },
-    {
-      id: 6,
-      title: "Professional Cleaning",
-      description: "Our professional team takes care of the maintenance of your accommodation."
-    },
-    {
-      id: 7,
-      title: "We Take Care of the Rest",
-      description: "We take care of all the formalities and guarantee you rent payments without delay."
-    }
-  ];
+const steps = [
+  {
+    id: 1,
+    title: "APPOINTMENT SCHEDULING***PRISE DE RENDEZ-VOUS",
+    description:
+      "First meeting and presentation of our rental solution.***Première rencontre et présentation de notre solution de location.",
+  },
+  {
+    id: 2,
+    title: "PROPERTY VISIT***VISITE DU LOGEMENT",
+    description:
+      "We organize a visit to your property to assess its potential.***Nous organisons une visite de votre logement pour déterminer son potentiel.",
+  },
+  {
+    id: 3,
+    title: "LEASE SIGNING***SIGNATURE DU BAIL",
+    description:
+      "After the property inspection, we sign a lease so that we become your tenants.***Après l'état des lieux, signature d'un bail pour que nous devenions vos locataires.",
+  },
+  {
+    id: 4,
+    title: "FURNISHING & DECORATION***AMEUBLEMENT & DÉCORATION",
+    description:
+      "Our team steps in to furnish and decorate your property if needed.***Notre équipe intervient pour meubler et décorer votre logement si nécessaire.",
+  },
+  {
+    id: 5,
+    title: "RESIDENT SEARCH***RECHERCHE DES RÉSIDENTS",
+    description:
+      "Your property is put on the market with a strict selection process for future tenants.***Mise sur le marché de votre logement et sélection stricte des futurs locataires.",
+  },
+  {
+    id: 6,
+    title: "PROFESSIONAL CLEANING***NETTOYAGES PROFESSIONNELS",
+    description:
+      "Our professional team takes care of maintaining your property.***Notre équipe professionnelle se charge de l'entretien de votre logement.",
+  },
+  {
+    id: 7,
+    title: "LOCA SIMPLY TAKES CARE OF THE REST!***LOCA SIMPLY S'OCCUPE DU RESTE !",
+    description:
+      "We handle all the formalities and guarantee you on-time rent payments.***Nous nous occupons de toutes les démarches et vous garantissons un loyer sans retard.",
+  },
+];
+
 
 const OurMethod = () => {
+
+  const {t} = useTranslation();
  
   return (
     <div className='default-width section-y-padding'>
-        <Title eyebrow="Our method">
-            A simple, 100% WIN-WIN process!
+        <Title eyebrow={t("Our method***Notre méthode")}>
+            {t("A simple, 100% WIN-WIN process!***Un process simple 100% GAGNANT-GAGNANT !")}
         </Title>
         <div className="min-h-screen bg-white mt-20">
       <div className="max-w-5xl mx-auto">
@@ -96,12 +107,13 @@ const TimelineItem = ({ step, index }) => {
     6: Home,
     7: CheckCircle
   };
+  const {t} = useTranslation();
   
   const Icon = icons[step.id];
   const isLeft = index % 2 === 0;
   
   return (
-    <div className="relative flex items-start justify-center mb-20 last:mb-0">
+    <div className="relative flex items-start justify-center mb-12 last:mb-0">
       {/* Content Left */}
       <div className={`w-5/12 ${isLeft ? 'text-right pr-12' : ''}`}>
         {isLeft && (
@@ -113,15 +125,15 @@ const TimelineItem = ({ step, index }) => {
             className='border p-4 border-primary'
           >
             <div className="mb-2">
-              <span className="text-xs font-semibold text-gray-500 tracking-wider">
-                STEP {step.id}
-              </span>
+              {/* <span className="text-xs font-semibold text-gray-500 tracking-wider">
+                {t("STEP***ÉTAPE")} {step.id}
+              </span> */}
             </div>
             <h3 className="text-xl font-semibold text-primary mb-3">
-              {step.title}
+              {t(step.title)}
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              {step.description}
+              {t(step.description)}
             </p>
           </motion.div>
         )}
@@ -131,7 +143,7 @@ const TimelineItem = ({ step, index }) => {
       <div className="relative flex flex-col items-center">
         {/* Vertical line */}
         {index < 6 && (
-          <div className="absolute top-0 w-[1.5px] bg-primary" style={{ height: 'calc(100% + 230px)' }}></div>
+          <div className="absolute top-0 w-[1.5px] bg-primary" style={{ height: 'calc(100% + 160px)' }}></div>
         )}
         
         {/* Icon */}
@@ -157,15 +169,15 @@ const TimelineItem = ({ step, index }) => {
             className='border p-4 border-primary'
           >
             <div className="mb-2">
-              <span className="text-xs font-semibold text-gray-500 tracking-wider">
-                STEP {step.id}
-              </span>
+              {/* <span className="text-xs font-semibold text-gray-500 tracking-wider">
+                {t("STEP***ÉTAPE")} {step.id}
+              </span> */}
             </div>
-            <h3 className="text-xl font-semibold text-primary mb-3">
-              {step.title}
+             <h3 className="text-xl font-semibold text-primary mb-3">
+              {t(step.title)}
             </h3>
             <p className="text-gray-600 leading-relaxed">
-              {step.description}
+              {t(step.description)}
             </p>
           </motion.div>
         )}

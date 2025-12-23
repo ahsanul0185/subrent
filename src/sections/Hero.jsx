@@ -8,25 +8,26 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useTranslation } from "../contexts/useTranslation";
 
 const slides = [
   {
-    text: "Are you worried about your empty, dilapidated home and having unpaid rent?",
+    text: "Are you worried about your empty, dilapidated home and having unpaid rent?***Êtes-vous inquiet de voir votre logement vide, se dégrader et de subir des loyers impayés ?",
     image:
       "https://images.unsplash.com/photo-1572891086295-6c1c7c476549?fm=jpg&q=60&w=3000",
   },
   {
-    text: "We help property owners rent faster with peace of mind.",
+    text: "We help property owners rent faster with peace of mind.***Nous aidons les propriétaires à louer plus rapidement en toute sérénité.",
     image:
       "https://na.rdcpix.com/9e0979d88a8ac5444966cf4cc11cfa73w-c428287539xd-w928_q80.jpg",
   },
   {
-    text: "Professional property management you can trust.",
+    text: "Professional property management you can trust.***Une gestion locative professionnelle en toute confiance.",
     image:
       "https://static.wixstatic.com/media/420f35_1b6ceec079ae4ca3a5129aac207110e8~mv2.jpeg",
   },
   {
-    text: "Turn your property into a steady income stream.",
+    text: "Turn your property into a steady income stream.***Transformez votre bien en une source de revenus réguliers.",
     image:
       "https://alifeunfolding.com/wp-content/uploads/2025/03/Wood-Accent-wall-as-headboard-in-Short-term-Rental-1024x676.jpg",
   },
@@ -60,6 +61,7 @@ const textVariants = {
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
+  const {t} = useTranslation();
 
   const handlePrev = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -119,7 +121,7 @@ const Hero = () => {
             // transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
             className="max-w-3xl text-center text-3xl md:text-5xl font-semibold text-white"
           >
-            {slides[activeIndex].text}
+            {t(slides[activeIndex].text)}
           </motion.h1>
           <motion.button
             variants={textVariants}
@@ -130,7 +132,7 @@ const Hero = () => {
             // transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1], delay : 0.07}}
             // transition={{ delay : 0.07}}
           className="flex items-center gap-3 uppercase text-secondary cursor-pointer hover:text-white group">
-            Learn more <GoArrowRight className="group-hover:translate-x-1 duration-150 text-xl"/>
+            {t("Learn more***Apprendre encore plus")} <GoArrowRight className="group-hover:translate-x-1 duration-150 text-xl"/>
           </motion.button>
           </div>
       </AnimatePresence>
