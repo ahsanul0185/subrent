@@ -76,7 +76,7 @@ const ContactUs = () => {
             {/* Submit Button */}
             <Button
               onClick={handleSubmit}
-              className="px-8 mt-0"
+              className="px- mt-0"
             >
               {t("Send Message***Envoyer un message")}
             </Button>
