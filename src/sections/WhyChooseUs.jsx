@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="section-y-padding bg-gray-100">
+    <section id="who-choose-us" className="section-y-padding bg-gray-100">
       <div className="default-width ">
         <Title eyebrow={t("Why choose Subrent?***Pourquoi choisir Subrent?")}>
           {t("A unique experience***Une expérience unique")}
@@ -77,17 +77,17 @@ const WhyChooseUs = () => {
               <div className="text-2xl text-primary group-hover:text-white">
                 {feature.icon}
               </div>
-              <h4 className="font-semibold text-2xl group-hover:text-white">
+              <h4 className="font-semibold text-xl md:text-2xl group-hover:text-white">
                 {t(feature.title)}
               </h4>
-              <p className="text-gray-600 group-hover:text-white">
+              <p className="text-gray-600 text-sm md:text-base group-hover:text-white">
                 {t(feature.description)}
               </p>
             </div>
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

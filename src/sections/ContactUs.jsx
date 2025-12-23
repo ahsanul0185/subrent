@@ -27,14 +27,14 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="default-width section-y-padding">
+    <section id="contact-us" className="default-width section-y-padding">
       <Title>{t("Contact Us***Nous contacter")}</Title>
 
       {/* Content Grid */}
       <div className="max-w-6xl mx-auto flex gap-12 mt-20 justify-center">
 
         {/* Left Side - Profile Card */}
-        <div className="flex w-1/2 flex-col items-center justify-center">
+        <div className="hidden md:flex w-1/2 flex-col items-center justify-center">
             <motion.img initial={{y : 50, opacity : 0}} whileInView={{y : 0, opacity : 1}} transition={{duration : 0.5}} viewport={{amount : 0.5, once : true}} src={img} alt="" className="w-[90%]" />
         </div>
 
@@ -49,7 +49,7 @@ const ContactUs = () => {
                 placeholder={t("Your Name***Votre nom")}
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-5 py-3 bg-gray-50 border-[0.5px] border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
               />
               <input
                 type="email"
@@ -57,7 +57,7 @@ const ContactUs = () => {
                 placeholder={t("Your Email***Votre e-mail")}
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-5 py-3 bg-gray-50 border-[0.5px] border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
               />
             </div>
 
@@ -69,7 +69,7 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="8"
-                className="w-full px-5 py-3 bg-gray-50 border-[0.5px] border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400 resize-none"
+                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400 resize-none"
               ></textarea>
             </div>
 
@@ -85,7 +85,7 @@ const ContactUs = () => {
 
 
       </div>
-    </div>
+    </section>
   );
 };
 

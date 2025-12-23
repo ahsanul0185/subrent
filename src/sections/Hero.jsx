@@ -101,25 +101,27 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 left-2 -translate-y-1/2  cursor-pointer z-40 group hover:text-white" onClick={handlePrev}>
-        <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-primary -z-10`} />
+      <div className="absolute bottom-7 right-2 md:right-8 z-40 flex gap-5 scale-75 md:scale-100">
+        <button className="relative text-2xl p-2  cursor-pointer z-40 group text-white border border-white hover:text-primary" onClick={handlePrev}>
+        <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-white -z-10`} />
         <GoChevronLeft  className="z-10"/>
       </button>
-      <button className="bg-gray-300 text-2xl p-2 absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer z-40 group hover:text-white" onClick={handleNext}>
-        <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-primary -z-10`} />
+      <button className="relative text-2xl p-2 cursor-pointer z-40 group text-white border border-white hover:text-primary" onClick={handleNext}>
+        <span className={`absolute w-full bottom-0 left-0 h-0 group-hover:h-full duration-200 bg-white -z-10`} />
         <GoChevronRight className="z-10"/>
       </button>
+      </div>
 
         <div className="absolute inset-0  bg-linear-to-t from-black/80 from-10% via-30% via-black/50 to-black/50 z-30">
       <AnimatePresence mode="wait">
-          <div key={activeIndex} className="flex items-center justify-center flex-col gap-10 h-full">
+          <div key={activeIndex} className="flex items-center justify-center flex-col gap-5 md:gap-10 h-full px-2.5">
             <motion.h1
             variants={textVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             // transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
-            className="max-w-3xl text-center text-3xl md:text-5xl font-semibold text-white"
+            className="max-w-3xl text-center text-2xl sm:text-3xl md:text-5xl font-semibold text-white"
           >
             {t(slides[activeIndex].text)}
           </motion.h1>
@@ -131,7 +133,7 @@ const Hero = () => {
             custom={0.07}
             // transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1], delay : 0.07}}
             // transition={{ delay : 0.07}}
-          className="flex items-center gap-3 uppercase text-secondary cursor-pointer hover:text-white group">
+          className="flex items-center gap-3 uppercase text-sm md:text-base text-white/60 cursor-pointer hover:text-white group">
             {t("Learn more***Apprendre encore plus")} <GoArrowRight className="group-hover:translate-x-1 duration-150 text-xl"/>
           </motion.button>
           </div>

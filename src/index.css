@@ -8,6 +8,7 @@
 }
 
 
+
 .default-width {
   @apply max-w-350 mx-auto px-6 md:px-12 lg:px-16;
 }

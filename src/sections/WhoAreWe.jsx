@@ -36,8 +36,8 @@ const WhoAreWe = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="default-width section-y-padding flex gap-28 flex-col lg:flex-row items-start">
-      <div className="relative w-[95%] lg:w-[45%] shrink-0">
+    <section id="who-are-we" className="default-width section-y-padding flex gap-28 flex-col lg:flex-row items-start">
+      <div className="relative w-[90%] md:w-[95%] lg:w-[45%] shrink-0">
         <motion.img
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -66,14 +66,14 @@ const WhoAreWe = () => {
         <div>
           <motion.h1
             variants={itemVariants}
-            className="text-[2.6rem] leading-12"
+            className="text-2xl sm:text-3xl lg:text-[2.6rem] leading-12"
           >
             {t(
               "We become your perfect tenant!***Nous devenons votre locataire parfait !"
             )}
           </motion.h1>
 
-          <div className="mt-6 space-y-4">
+          <div className="mt-6 text-sm md:text-base space-y-4">
             <motion.p variants={itemVariants} className="text-gray-600">
               {t(
                 "The ideal solution to rent out your property with complete peace of mind.***La solution idéale pour louer votre bien en toute tranquillité"
@@ -110,7 +110,7 @@ const WhoAreWe = () => {
           </motion.div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

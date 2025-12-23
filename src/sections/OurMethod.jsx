@@ -58,7 +58,7 @@ const OurMethod = () => {
   const {t} = useTranslation();
  
   return (
-    <div className='default-width section-y-padding'>
+    <section id="our-method" className='default-width section-y-padding overflow-x-hidden'>
         <Title eyebrow={t("Our method***Notre méthode")}>
             {t("A simple, 100% WIN-WIN process!***Un process simple 100% GAGNANT-GAGNANT !")}
         </Title>
@@ -81,20 +81,19 @@ const OurMethod = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mt-20 pt-8 border-t border-gray-200"
+          className="text-center mt-6 md:mt-16 pt-8 border-t border-gray-200"
         >
-          <Button arrow={false}>
+          <Button arrow={false} className="mt-2">
           Get Started
           </Button>
         </motion.div>
       </div>
     </div>
-    </div>
+    </section>
   );
 }
 
 export default OurMethod
-
 
 
 const TimelineItem = ({ step, index }) => {
@@ -113,9 +112,9 @@ const TimelineItem = ({ step, index }) => {
   const isLeft = index % 2 === 0;
   
   return (
-    <div className="relative flex items-start justify-center mb-12 last:mb-0">
-      {/* Content Left */}
-      <div className={`w-5/12 ${isLeft ? 'text-right pr-12' : ''}`}>
+    <div className="relative flex items-start justify-center md:justify-center mb-12 last:mb-0">
+      {/* Content Left - Hidden on mobile */}
+      <div className={`hidden md:block w-5/12 ${isLeft ? 'text-right pr-12' : ''}`}>
         {isLeft && (
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -125,11 +124,8 @@ const TimelineItem = ({ step, index }) => {
             className='border p-4 border-primary'
           >
             <div className="mb-2">
-              {/* <span className="text-xs font-semibold text-gray-500 tracking-wider">
-                {t("STEP***ÉTAPE")} {step.id}
-              </span> */}
             </div>
-            <h3 className="text-xl font-semibold text-primary mb-3">
+            <h3 className="md:text-xl font-semibold text-primary mb-2">
               {t(step.title)}
             </h3>
             <p className="text-gray-600 leading-relaxed">
@@ -143,7 +139,7 @@ const TimelineItem = ({ step, index }) => {
       <div className="relative flex flex-col items-center">
         {/* Vertical line */}
         {index < 6 && (
-          <div className="absolute top-0 w-[1.5px] bg-primary" style={{ height: 'calc(100% + 160px)' }}></div>
+          <div className="absolute top-0 w-[1.5px] bg-primary md:block" style={{ height: 'calc(100% + 160px)' }}></div>
         )}
         
         {/* Icon */}
@@ -152,35 +148,31 @@ const TimelineItem = ({ step, index }) => {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="relative z-10 w-12 h-12 rounded-full bg-primary border border-gray-700 flex items-center justify-center"
+          className="relative z-10 w-12 h-12 rounded-full bg-primary border border-gray-700 flex items-center justify-center flex-shrink-0"
         >
           <Icon className="w-6 h-6 text-white" />
         </motion.div>
       </div>
       
-      {/* Content Right */}
-      <div className={`w-5/12 ${!isLeft ? 'text-left pl-12' : ''}`}>
-        {!isLeft && (
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className='border p-4 border-primary'
-          >
-            <div className="mb-2">
-              {/* <span className="text-xs font-semibold text-gray-500 tracking-wider">
-                {t("STEP***ÉTAPE")} {step.id}
-              </span> */}
-            </div>
-             <h3 className="text-xl font-semibold text-primary mb-3">
-              {t(step.title)}
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {t(step.description)}
-            </p>
-          </motion.div>
-        )}
+      {/* Content Right - Desktop: alternating, Mobile: always shown */}
+      <div className={`w-full md:w-5/12 pl-6 md:pl-0 ${!isLeft ? 'md:text-left md:pl-12' : ''}`}>
+        {/* Mobile: Always show content */}
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className={`border p-4 border-primary ${isLeft ? 'md:hidden' : ''}`}
+        >
+          <div className="mb-2">
+          </div>
+           <h3 className="md:text-xl font-semibold text-primary mb-2">
+            {t(step.title)}
+          </h3>
+          <p className="text-gray-600 leading-relaxed">
+            {t(step.description)}
+          </p>
+        </motion.div>
       </div>
     </div>
   );
