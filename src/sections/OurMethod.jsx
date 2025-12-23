@@ -62,7 +62,7 @@ const OurMethod = () => {
         <Title eyebrow={t("Our method***Notre méthode")}>
             {t("A simple, 100% WIN-WIN process!***Un process simple 100% GAGNANT-GAGNANT !")}
         </Title>
-        <div className="min-h-screen bg-white mt-20">
+        <div className="bg-white mt-20">
       <div className="max-w-5xl mx-auto">
         {/* Timeline */}
         <div className="relative">
