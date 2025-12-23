@@ -23,7 +23,7 @@ const ContactUs = () => {
 
   const handleSubmit = () => {
     console.log("Form submitted:", formData);
-    alert("Visit request submitted successfully!");
+    // alert("Visit request submitted successfully!");
   };
 
   return (
@@ -46,7 +46,7 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder={t("Your Name***Votre nom")}
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-5 py-3 bg-gray-50 border-[0.5px] border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
@@ -54,7 +54,7 @@ const ContactUs = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder={t("Your Email***Votre e-mail")}
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-5 py-3 bg-gray-50 border-[0.5px] border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
@@ -65,7 +65,7 @@ const ContactUs = () => {
             <div className="relative">
               <textarea
                 name="message"
-                placeholder="Submit Request"
+                placeholder="Message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="8"
@@ -78,7 +78,7 @@ const ContactUs = () => {
               onClick={handleSubmit}
               className="px-8 mt-0"
             >
-              Send Message
+              {t("Send Message***Envoyer un message")}
             </Button>
           </div>
         </motion.div>

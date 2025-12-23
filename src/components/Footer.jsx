@@ -4,7 +4,11 @@ import logo from '/logo-1.jpeg'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa6';
 import Button from './Button';
+import { useTranslation } from '../contexts/useTranslation';
 export default function Footer() {
+
+  const {t} = useTranslation()
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -32,7 +36,7 @@ export default function Footer() {
               <Phone className="w-11 h-11 text-white" />
             </div>
             <div>
-              <h3 className="text-gray-300 text-sm mb-0.5">Call Us</h3>
+              <h3 className="text-gray-300 text-sm mb-0.5">{t("Call Us***Appelez-nous")}</h3>
               <p className="text-xl text-white">+1 123 456 789</p>
             </div>
           </div>
@@ -43,7 +47,7 @@ export default function Footer() {
               <Clock className="w-11 h-11 text-white" />
             </div>
             <div>
-              <h3 className="text-gray-300 text-sm mb-0.5">Opening Hours</h3>
+              <h3 className="text-gray-300 text-sm mb-0.5">{t("Opening Hours***Heures d'ouverture")}</h3>
               <p className="text-xl text-white">Mon to Sat 08:00 - 20:00</p>
             </div>
           </div>
@@ -54,7 +58,7 @@ export default function Footer() {
               <Mail className="w-11 h-11 text-white" />
             </div>
             <div>
-              <h3 className="text-gray-300 text-sm mb-0.5">Email Us</h3>
+              <h3 className="text-gray-300 text-sm mb-0.5">{t("Email Us***Envoyez-nous un courriel")}</h3>
               <p className="text-xl text-white">contact@subrent.com</p>
             </div>
           </div>
