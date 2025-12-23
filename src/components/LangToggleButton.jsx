@@ -8,7 +8,6 @@ const LangToggleButton = () => {
 
   return (
     <button
-    arrow={false} 
       onClick={toggleLanguage} 
       className="text-xs px-1 py-0.5 flex items-center gap-2 text-white border bg-transparent rounded cursor-pointer hover:bg-white hover:text-black duration-200"
     >

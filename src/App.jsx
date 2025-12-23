@@ -6,8 +6,13 @@ import WhyChooseUs from './sections/WhyChooseUs'
 import OurMethod from './sections/OurMethod'
 import OurTenants from './sections/OurTenants'
 import Reviews from './sections/Reviews'
+import ContactUs from './sections/ContactUs'
+import Footer from './components/Footer'
+import { useLenis } from './contexts/useLenis'
 
 const App = () => {
+
+    useLenis();
   return (
     <>
       <Navbar/>
@@ -16,8 +21,9 @@ const App = () => {
       <WhyChooseUs />
       <OurMethod />
       <OurTenants />
+      <ContactUs />
       {/* <Reviews/> */}
-      <div className='h-screen'></div>
+      <Footer />
     </>
   )
 }
