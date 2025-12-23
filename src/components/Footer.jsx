@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="w-10 h-10 rounded-full overflow-clip">
               <img src={logo} alt="" className='rounded-full scale-110' />
             </div>
-            <h2 className="text-3xl md:text-4xl">Subrent</h2>
+            <h2 className="text-3xl md:text-4xl">SUBRENT</h2>
           </div>
           <p className="text-gray-300 md:text-lg">712 Jefferson Ave, Brooklyn</p>
           <p className="text-gray-300 md:text-lg">New York 11221</p>
@@ -68,7 +68,7 @@ export default function Footer() {
         <div className="border-t border-gray-100/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Copyright */}
           <p className="text-gray-400 text-sm">
-            Copyright © {new Date().getFullYear()} Subrent
+            Copyright © {new Date().getFullYear()} SUBRENT
           </p>
 
           {/* Social Icons */}

@@ -112,7 +112,7 @@ const Hero = () => {
       </button>
       </div>
 
-        <div className="absolute inset-0  bg-linear-to-t from-black/80 from-10% via-30% via-black/50 to-black/50 z-30">
+        <div className="absolute inset-0  bg-linear-to-t from-black/85 from-10% via-30% via-black/55 to-black/55 z-30">
       <AnimatePresence mode="wait">
           <div key={activeIndex} className="flex items-center justify-center flex-col gap-5 md:gap-10 h-full px-2.5">
             <motion.h1

@@ -37,7 +37,7 @@ const WhoAreWe = () => {
 
   return (
     <section id="who-are-we" className="default-width section-y-padding flex gap-28 flex-col lg:flex-row items-start">
-      <div className="relative w-[90%] md:w-[95%] lg:w-[45%] shrink-0">
+      <div className="relative w-[86%] md:w-[95%] lg:w-[45%] shrink-0">
         <motion.img
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -66,7 +66,7 @@ const WhoAreWe = () => {
         <div>
           <motion.h1
             variants={itemVariants}
-            className="text-2xl sm:text-3xl lg:text-[2.6rem] leading-12"
+            className="text-2xl sm:text-3xl lg:text-[2.6rem] md:leading-12"
           >
             {t(
               "We become your perfect tenant!***Nous devenons votre locataire parfait !"
