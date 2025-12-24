@@ -62,11 +62,11 @@ const scrollToSection = (id) => {
       <nav className={`w-full left-0 top-0 z-50 fixed ${isTop ? "" : "bg-primary"} duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
         <div className='default-width flex items-center justify-between gap-6 py-4'>
           <div className='flex items-center gap-6'>
-            <div className='flex items-center gap-2'>
-              <div className='rounded-full w-9 grid place-items-center aspect-square overflow-clip'>
+            <div onClick={() => window.location = "/"}  className='flex items-center gap-2 cursor-pointer'>
+              <div className=' rounded-full w-9 grid place-items-center aspect-square overflow-clip'>
                 <img src="./logo-1.jpeg" className='w-12 cursor-pointer rounded-full aspect-square scale-108' alt="Subrent logo" />
               </div>
-              <h2 className='text-white font-bold tracking-wider text-xl md:text-2xl'>SUBRENT</h2>
+              <h2 className='text-white font-bold tracking-wider text-xl md:text-2xl cursor-pointer'>SUBRENT</h2>
             </div>
             <div className='hidden md:block'>
               <LangToggleButton />
@@ -76,7 +76,7 @@ const scrollToSection = (id) => {
           {/* Desktop Menu */}
           <ul className='hidden lg:flex gap-5'>
             {navLinks.map((item, idx) => (
-              <button key={idx} onClick={() => scrollToSection(item.hash)} className={`flex flex-col items-center justify-center gap-0.5 group text-gray-50`}>
+              <button key={idx} onClick={() => scrollToSection(item.hash)} className={`flex cursor-pointer flex-col items-center justify-center gap-0.5 group text-gray-50`}>
                 <span>{t(item.text)}</span>
                 <span className={`w-full h-0.5 bg-white opacity-0 invisible translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 duration-200 ease-out`}/>
               </button>
