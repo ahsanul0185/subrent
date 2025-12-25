@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 
 import Button from "../components/Button";
 import { useTranslation } from "../contexts/useTranslation";
+import { getLenis } from '../contexts/useLenis'
 
 const containerVariants = {
   hidden: {},
@@ -34,6 +35,16 @@ const itemVariants = {
 
 const WhoAreWe = () => {
   const { t } = useTranslation();
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    const lenis = getLenis();
+    if (!section || !lenis) return;
+  
+    const offset = -80; // fixed navbar
+    const targetY = section.getBoundingClientRect().top + window.scrollY + offset;
+    lenis.scrollTo(targetY, { duration: 1 });
+  };
 
   return (
     <section id="who-are-we" className="default-width section-y-padding flex gap-28 flex-col lg:flex-row items-start">
@@ -106,7 +117,7 @@ const WhoAreWe = () => {
           </div>
 
           <motion.div variants={itemVariants}>
-            <Button>{t("Contact us***Contactez-nous")}</Button>
+            <Button onClick={() => scrollToSection("contact-us")}>{t("Contact us***Contactez-nous")}</Button>
           </motion.div>
         </div>
       </motion.div>

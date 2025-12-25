@@ -46,7 +46,7 @@ const steps = [
   },
   {
     id: 7,
-    title: "LOCA SIMPLY TAKES CARE OF THE REST!***LOCA SIMPLY S'OCCUPE DU RESTE !",
+    title: "SUBRENT TAKES CARE OF THE REST!***SUBRENT S'OCCUPE DU RESTE !",
     description:
       "We handle all the formalities and guarantee you on-time rent payments.***Nous nous occupons de toutes les démarches et vous garantissons un loyer sans retard.",
   },
@@ -60,7 +60,7 @@ const OurMethod = () => {
   return (
     <section id="our-method" className='default-width section-y-padding overflow-x-hidden'>
         <Title eyebrow={t("Our method***Notre méthode")}>
-            {t("A simple, 100% WIN-WIN process!***Un process simple 100% GAGNANT-GAGNANT !")}
+            {t("A simple, 100% WIN-WIN process!***Un processus simple et efficace, 100% GAGNANT-GAGNANT !")}
         </Title>
         <div className="bg-white mt-20">
       <div className="max-w-5xl mx-auto">
@@ -74,19 +74,6 @@ const OurMethod = () => {
             />
           ))}
         </div>
-        
-        {/* CTA */}
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mt-6 md:mt-16 pt-8 border-t border-gray-200"
-        >
-          <Button arrow={false} className="mt-2">
-          Get Started
-          </Button>
-        </motion.div>
       </div>
     </div>
     </section>

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Phone, Clock, Mail } from 'lucide-react';
 import logo from '/logo-1.jpeg'
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa6';
-import Button from './Button';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { useTranslation } from '../contexts/useTranslation';
 export default function Footer() {
 
@@ -14,7 +12,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-white py-10 md:py-16 px-4 relative">
+    <footer className="bg-primary-dark text-white py-10 md:py-16 px-4 relative">
       <div className="max-w-7xl mx-auto">
         {/* Logo and Address Section */}
         <div className="text-center mb-8 md:mb-16">
@@ -24,8 +22,6 @@ export default function Footer() {
             </div>
             <h2 className="text-3xl md:text-4xl">SUBRENT</h2>
           </div>
-          <p className="text-gray-300 md:text-lg">712 Jefferson Ave, Brooklyn</p>
-          <p className="text-gray-300 md:text-lg">New York 11221</p>
         </div>
 
         {/* Contact Info Section */}
@@ -37,7 +33,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="text-gray-300 text-xs md:text-sm mb-0.5">{t("Call Us***Appelez-nous")}</h3>
-              <p className="md:text-xl text-white">+1 123 456 789</p>
+              <p className="md:text-xl text-white">+33 0783411396</p>
             </div>
           </div>
 
@@ -48,7 +44,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="text-gray-300 text-xs md:text-sm mb-0.5">{t("Opening Hours***Heures d'ouverture")}</h3>
-              <p className="md:text-xl text-white">Mon to Sat 08:00 - 20:00</p>
+              <p className="md:text-xl text-white">{t("Mon to Sat 08:00 - 20:00***Lundi au Samedi 08:00-21:00")}</p>
             </div>
           </div>
 
@@ -76,14 +72,8 @@ export default function Footer() {
             <a href="#" className="text-gray-400 transition-colors" aria-label="Facebook">
               <FaFacebook className="w-5 h-5" />
             </a>
-            <a href="#" className="text-gray-400 transition-colors" aria-label="Twitter">
-              <FaTwitter className="w-5 h-5" />
-            </a>
             <a href="#" className="text-gray-400 transition-colors" aria-label="Instagram">
               <FaInstagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-gray-400 transition-colors" aria-label="YouTube">
-              <FaYoutube className="w-5 h-5" />
             </a>
           </div>
         </div>
