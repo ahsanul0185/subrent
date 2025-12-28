@@ -22,6 +22,8 @@ export default function Footer() {
             </div>
             <h2 className="text-3xl md:text-4xl">SUBRENT</h2>
           </div>
+           <p className="text-gray-300 text-lg">Alpes-Maritimes</p>
+          {/* <p className="text-gray-300 text-lg">New York 11221</p> */}
         </div>
 
         {/* Contact Info Section */}
@@ -33,8 +35,10 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="text-gray-300 text-xs md:text-sm mb-0.5">{t("Call Us***Appelez-nous")}</h3>
-              <p className="md:text-xl text-white">+33 0783411396</p>
+              <p className="md:text-xl text-white">+33 783411396</p>
             </div>
+
+            
           </div>
 
           {/* Opening Hours */}
@@ -44,7 +48,7 @@ export default function Footer() {
             </div>
             <div>
               <h3 className="text-gray-300 text-xs md:text-sm mb-0.5">{t("Opening Hours***Heures d'ouverture")}</h3>
-              <p className="md:text-xl text-white">{t("Mon to Sat 08:00 - 20:00***Lundi au Samedi 08:00-21:00")}</p>
+              <p className="md:text-xl text-white">{t("Mon to Sat 08:00 - 21:00***Lundi au Samedi 08:00-21:00")}</p>
             </div>
           </div>
 
