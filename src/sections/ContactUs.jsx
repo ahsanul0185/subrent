@@ -49,7 +49,7 @@ const ContactUs = () => {
                 placeholder={t("Your Name***Votre nom")}
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-400 focus:border-black outline-none transition text-sm"
               />
               <input
                 type="email"
@@ -57,7 +57,7 @@ const ContactUs = () => {
                 placeholder={t("Your Email***Votre e-mail")}
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-400 focus:border-black outline-none transition text-sm"
               />
             </div>
 
@@ -69,14 +69,14 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="8"
-                className="w-full px-5 py-3 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-[0.5px] focus:ring-primary focus:border-transparent text-gray-900 placeholder-gray-400 resize-none"
+                className="w-full px-4 py-3 border bg-gray-50 border-gray-400 focus:border-black outline-none transition resize-none text-sm"
               ></textarea>
             </div>
 
             {/* Submit Button */}
             <Button
               onClick={handleSubmit}
-              className="px- mt-0"
+              className="md:text-sm mt-0"
             >
               {t("Send Message***Envoyer un message")}
             </Button>

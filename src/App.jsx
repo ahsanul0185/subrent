@@ -1,31 +1,31 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './sections/Hero'
-import WhoAreWe from './sections/WhoAreWe'
-import WhyChooseUs from './sections/WhyChooseUs'
-import OurMethod from './sections/OurMethod'
-import OurTenants from './sections/OurTenants'
-import Reviews from './sections/Reviews'
-import ContactUs from './sections/ContactUs'
-import Footer from './components/Footer'
-import { useLenis } from './contexts/useLenis'
+import { useLenis } from "./contexts/useLenis";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import AdminLogin from "./pages/AdminLogin";
+import { Toaster } from "sonner";
+import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoutes";
+import ListReviews from "./pages/ListReviews";
+import CreateReview from "./pages/CreateReview";
+import UpdateReview from "./pages/UpdateReview";
 
 const App = () => {
-
-    useLenis();
+  useLenis();
   return (
     <>
-      <Navbar/>
-      <Hero />
-      <WhoAreWe />
-      <WhyChooseUs />
-      <OurMethod />
-      <OurTenants />
-      <ContactUs />
-      <Reviews/>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+          <Route index element={<Navigate to="reviews" />} />
+          <Route path="reviews" element={<ListReviews />} />
+          <Route path="create-review" element={<CreateReview />} />
+          <Route path="update-review/:id" element={<UpdateReview />} />
+        </Route>
+      </Routes>
+      <Toaster position="top-center" />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
