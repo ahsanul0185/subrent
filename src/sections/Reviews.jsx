@@ -61,7 +61,7 @@ const Reviews = () => {
     <div id="reviews" className="section-y-padding">
       <Title>{t("Client Reviews***Avis-Clients")}</Title>
       <div className="default-width">
-        {reviews.length > 7 ? (
+        {reviews.length > 0 ? (
           <ReveiwSlider
             reviews={reviews}
             setShowReviewForm={setShowReviewForm}

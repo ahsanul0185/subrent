@@ -19,7 +19,7 @@ const DashSidebar = () => {
   };
   
   return (
-    <div className="h-screen w-64 bg-black border-r border-zinc-800 flex flex-col">
+    <div className="sticky top-0 left-0 h-screen w-64 bg-black border-r border-zinc-800 flex flex-col">
       {/* Logo/Brand Section */}
       <div className="h-16 flex gap-4 items-center px-6 border-b border-zinc-800">
     
