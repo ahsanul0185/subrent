@@ -1,24 +1,28 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, serverTimestamp, updateDoc } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, where, serverTimestamp, updateDoc } from "firebase/firestore"
 import { db } from "./firebase"
 import { toast } from "sonner";
 
 
 
 export const createReview = async (data) => {
-   try {
-    const docRef  = await addDoc(collection(db, "reviews"), {
-        ...data,
-        createdAt: serverTimestamp()
+  try {
+    const docRef = await addDoc(collection(db, "reviews"), {
+      ...data,
+      createdAt: serverTimestamp()
     })
 
     return {
       success: true,
       id: docRef.id
-    };
-   } catch (error) {
+    }
+  } catch (error) {
     console.log(error)
-    toast.error(error)
-   }
+    toast.error(error.message || "Failed to create review")
+    return {
+      success: false,
+      error: error.message || error
+    }
+  }
 }
 
 
@@ -31,43 +35,31 @@ export const getAllReviews = async () => {
   }));
   } catch (error) {
     console.log(error)
-    toast.error(error)
+    toast.error(error.message || "Failed to create review")
+    return {
+      success: false,
+      error: error.message || error
+    }
   }
 
 }
 
-
-
-// Approve review
-export const approveReview = async (id) => {
+export const getApprovedReviews = async () => {
   try {
-    await updateDoc(doc(db, "reviews", id), {
-      status: "APPROVED"
-    });
-    toast.success("Review approved");
-    return { success: true };
+    const reviewsRef = collection(db, "reviews");
+    const q = query(reviewsRef, where("status", "==", "APPROVED"));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
   } catch (error) {
-    console.error("Approve failed:", error);
-    toast.error("Failed to approve review");
-    return { success: false, error: error.message };
+    console.log(error)
+    toast.error(error.message || "Failed to create review")
+    return []
   }
 };
-
-// Reject review
-export const rejectReview = async (id) => {
-  try {
-    await updateDoc(doc(db, "reviews", id), {
-      status: "REJECTED"
-    });
-    toast.success("Review rejected");
-    return { success: true };
-  } catch (error) {
-    console.error("Reject failed:", error);
-    toast.error("Failed to reject review");
-    return { success: false, error: error.message };
-  }
-};
-
 
 export const deleteReview = async (id) => {
   try {
@@ -77,6 +69,38 @@ export const deleteReview = async (id) => {
   } catch (error) {
     console.error("Delete failed:", error);
     toast.error("Failed to delete review");
+    return { success: false, error: error.message };
+  }
+};
+
+
+
+// Get a single review by ID
+export const getReviewById = async (id) => {
+  try {
+    const docRef = doc(db, "reviews", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return { success: true, data: { id: docSnap.id, ...docSnap.data() } };
+    } else {
+      return { success: false, error: "Review not found" };
+    }
+  } catch (error) {
+    console.error("Fetch review failed:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+
+export const updateReview = async (id, updatedData) => {
+  try {
+    await updateDoc(doc(db, "reviews", id), updatedData);
+    toast.success("Review updated successfully");
+    return { success: true };
+  } catch (error) {
+    console.error("Update review failed:", error);
+    toast.error("Failed to update review");
     return { success: false, error: error.message };
   }
 };

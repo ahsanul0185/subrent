@@ -13,6 +13,7 @@ import { IoStar } from "react-icons/io5";
 import { useTranslation } from "../contexts/useTranslation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { PiNotePencilThin } from "react-icons/pi";
+import formatDate from "../utils/formatDate";
 
 
 
@@ -74,23 +75,17 @@ const ReveiwSlider = ({ setShowReviewForm, reviews }) => {
                 <div className="p-5 border-2 flex justify-between flex-col border-gray-500/30 min-h-52 sm:min-h-64 group  dark:hover:border-primary-light duration-300 select-none">
                   <div>
                     <div className="flex gap-1">
-                      {new Array(5).fill(0).map((star, idx) => (
-                        // <img
-                        //   key={idx}
-                        //   className="size-4 sm:size-5"
-                        //   src={asset_star_fill}
-                        //   alt="star"
-                        // />
-                        <IoStar className="text-orange-400" />
+                      {new Array(review.rating).fill(0).map((star, idx) => (
+                        <IoStar key={idx} className="text-orange-400" />
                       ))}
                     </div>
 
                     <p className="text-sm mt-6 duration-300 text-gray-900">
-                      {t(review.description)}
+                      {t(review.review)}
                     </p>
 
                     <p className="text-xs mt-3 italic duration-300 text-gray-600">
-                      {t(review.date)}
+                      {formatDate(review.date)}
                     </p>
                   </div>
 

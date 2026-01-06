@@ -2,10 +2,9 @@ import { CheckCircle, Star } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "../contexts/useTranslation";
 import Button from "./Button";
-import formatDate from "../utils/formatDate";
 import { createReview } from "../firebase/actions";
 
-const ReviewForm = ({ setShowReviewForm }) => {
+const ReviewForm = ({ setShowReviewForm, submitted, setSubmitted }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,7 +13,6 @@ const ReviewForm = ({ setShowReviewForm }) => {
     date: "",
   });
   const [hoveredStar, setHoveredStar] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -54,9 +52,9 @@ const ReviewForm = ({ setShowReviewForm }) => {
 
     let reviewData;
     if (!formData.date || formData.date === "") {
-      reviewData = { ...formData, date: formatDate(new Date()) };
+      reviewData = { ...formData, date: new Date() };
     } else {
-      reviewData = { ...formData, date: formatDate(formData.date) };
+      reviewData = { ...formData};
     }
 
     reviewData.status = "PENDING";
@@ -107,19 +105,6 @@ const ReviewForm = ({ setShowReviewForm }) => {
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="bg-white flex items-center justify-center p-6">
-        <div className="border border-gray-200 p-12 max-w-md w-full text-center">
-          <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl font-light text-black mb-2">Thank You</h2>
-          <p className="text-gray-500 text-sm">
-            Your review has been submitted
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-5xl mx-auto flex items-center justify-center mt-8">

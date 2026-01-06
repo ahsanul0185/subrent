@@ -16,7 +16,13 @@ export default function PrivateRoute({ children }) {
     });
   }, []);
 
-  if (checking) return <div className="loader"><Loader /></div>;
+  if (checking) {
+    return (
+      <div className="h-screen w-full grid place-items-center">
+        <Loader className="animate-spin size-10" />
+      </div>
+    );
+  }
 
   return user ? children : <Navigate to="/admin" />;
 }

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
 import { useTranslation } from "../contexts/useTranslation";
 import ReviewForm from "../components/ReviewForm";
 import ReveiwSlider from "../components/ReviewSlider";
 import Button from "../components/Button";
 import { PiNotePencilThin } from "react-icons/pi";
+import { getApprovedReviews } from "../firebase/actions";
+import { CheckCircle } from "lucide-react";
 
 const reviews = [
   {
@@ -55,8 +57,33 @@ const reviews = [
 ];
 
 const Reviews = () => {
+
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+    const [submitted, setSubmitted] = useState(false);
+
   const { t } = useTranslation();
   const [showReviewForm, setShowReviewForm] = useState(false);
+
+    useEffect(() => {
+    const fetchReviews = async () => {
+      setLoading(true);
+      try {
+        const data = await getApprovedReviews();
+        setReviews(data);
+      } catch (error) {
+        console.error("Error fetching approved reviews:", error);
+        toast.error("Failed to load reviews");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
+  console.log(reviews)
+
   return (
     <div id="reviews" className="section-y-padding">
       <Title>{t("Client Reviews***Avis-Clients")}</Title>
@@ -85,11 +112,21 @@ const Reviews = () => {
         <hr className="border-0 my-6" />
 
         {showReviewForm && (
+
+          submitted ? <div className="bg-white flex items-center justify-center p-6">
+        <div className="border border-gray-200 p-12 max-w-md w-full text-center">
+          <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+          <h2 className="text-2xl font-light text-black mb-2">Thank You</h2>
+          <p className="text-gray-500 text-sm">
+            Your review has been submitted
+          </p>
+        </div>
+      </div> : 
           <div className="border p-8 max-w-5xl mx-auto border-gray-400">
             <h2 className="text-2xl md:text-3xl text-center mb-8">
               {t("Leave a Review***Laisser un avis")}
             </h2>
-            <ReviewForm setShowReviewForm={setShowReviewForm} />
+            <ReviewForm setShowReviewForm={setShowReviewForm} submitted={submitted} setSubmitted={setSubmitted} />
           </div>
         )}
       </div>

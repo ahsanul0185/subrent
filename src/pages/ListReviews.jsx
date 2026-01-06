@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import {
-  approveReview,
   deleteReview,
   getAllReviews,
-  rejectReview,
+  updateReview,
 } from "../firebase/actions";
-import { Check, X, Edit, Trash2, Star, Eye } from "lucide-react";
+import { Check, X, Edit, Trash2, Star, Eye, Loader } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { TfiReload } from "react-icons/tfi";
 
 const ListReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedReview, setSelectedReview] = useState(null); // For modal
   const [reviewToDelete, setReviewToDelete] = useState(null);
+  const navigate = useNavigate();
 
 
   const fetchReviews = async () => {
     try {
+      setLoading(true)
       const data = await getAllReviews();
       setReviews(data);
     } catch (error) {
@@ -27,14 +30,14 @@ const ListReviews = () => {
 
 
   const handleApprove = async (id) => {
-    const res = await approveReview(id);
+    const res = await updateReview(id, {status : "APPROVED"});
     if (res.success) {
       await fetchReviews();
     }
   };
 
   const handleReject = async (id) => {
-    const res = await rejectReview(id);
+    const res = await updateReview(id, {status : "REJECTED"});
     if (res.success) {
       await fetchReviews();
     }
@@ -64,22 +67,33 @@ const handleDelete = async (id) => {
     fetchReviews();
   }, []);
 
+  const refresh = async () => {
+    await fetchReviews();
+  }
+
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <p className="text-zinc-400">Loading reviews...</p>
+      <div className="h-screen w-full grid place-items-center">
+        <Loader className="animate-spin size-10" />
       </div>
     );
   }
 
   return (
     <div className="p-8 overflow-x-auto">
-      <div className="mb-8">
+      <div className="flex">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Reviews</h1>
+
       </div>
 
-      <div className="border border-zinc-400  overflow-hidden  overflow-x-auto">
+<div className="flex justify-end">
+          <button onClick={refresh} className="p-2 mb-2 bg-gray-100 hover:bg-gray-800 hover:text-white duration-200 cursor-pointer rounded-full">
+          <TfiReload />
+        </button>
+</div>
+
+      <div className="border border-zinc-400  overflow-hidden relative  overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-zinc-400 bg-zinc-100">
@@ -103,7 +117,7 @@ const handleDelete = async (id) => {
           </thead>
           <tbody>
             {reviews.length === 0 ? (
-              <tr>
+              <tr className="">
                 <td
                   colSpan="7"
                   className="px-6 py-12 text-center text-zinc-500"
@@ -167,7 +181,7 @@ const handleDelete = async (id) => {
                       ) : (
                         <>
                           <button
-                            onClick={() => handleEdit(review.id)}
+                            onClick={() => navigate(`/dashboard/update-review/${review.id}`, review)}
                             className="p-2 bg-zinc-200 text-black hover:bg-zinc-800 hover:text-white transition-colors"
                             title="Edit"
                           >
