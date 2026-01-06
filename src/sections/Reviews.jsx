@@ -87,6 +87,9 @@ const Reviews = () => {
   return (
     <div id="reviews" className="section-y-padding">
       <Title>{t("Client Reviews***Avis-Clients")}</Title>
+
+      {loading ? "" :
+
       <div className="default-width">
         {reviews.length > 0 ? (
           <ReveiwSlider
@@ -130,6 +133,7 @@ const Reviews = () => {
           </div>
         )}
       </div>
+}
     </div>
   );
 };
