@@ -18,7 +18,6 @@ const ListReviews = () => {
 
   const fetchReviews = async () => {
     try {
-      setLoading(true)
       const data = await getAllReviews();
       setReviews(data);
     } catch (error) {
