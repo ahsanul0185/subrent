@@ -9,27 +9,50 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useTranslation } from "../contexts/useTranslation";
+import img_hero1 from "../assets/hero-1.jpg";
+import img_hero2 from "../assets/hero-2.jpg";
+import img_hero3 from "../assets/hero-3.jpeg";
+import img_hero4 from "../assets/hero-4.jpg";
+
+// const slides = [
+//   {
+//     text: "Are you worried about your empty, dilapidated home and having unpaid rent?***Êtes-vous inquiet de voir votre logement vide, se dégrader et de subir des loyers impayés ?",
+//     image:
+//       "https://images.unsplash.com/photo-1572891086295-6c1c7c476549?fm=jpg&q=60&w=3000",
+//   },
+//   {
+//     text: "We help property owners rent faster with peace of mind.***Nous aidons les propriétaires à louer plus rapidement en toute sérénité.",
+//     image:
+//       "https://na.rdcpix.com/9e0979d88a8ac5444966cf4cc11cfa73w-c428287539xd-w928_q80.jpg",
+//   },
+//   {
+//     text: "Professional property management you can trust.***Une gestion locative professionnelle en toute confiance.",
+//     image:
+//       "https://static.wixstatic.com/media/420f35_1b6ceec079ae4ca3a5129aac207110e8~mv2.jpeg",
+//   },
+//   {
+//     text: "Turn your property into a steady income stream.***Transformez votre bien en une source de revenus réguliers.",
+//     image:
+//       "https://alifeunfolding.com/wp-content/uploads/2025/03/Wood-Accent-wall-as-headboard-in-Short-term-Rental-1024x676.jpg",
+//   },
+// ];
 
 const slides = [
   {
     text: "Are you worried about your empty, dilapidated home and having unpaid rent?***Êtes-vous inquiet de voir votre logement vide, se dégrader et de subir des loyers impayés ?",
-    image:
-      "https://images.unsplash.com/photo-1572891086295-6c1c7c476549?fm=jpg&q=60&w=3000",
+    image: img_hero1,
   },
   {
     text: "We help property owners rent faster with peace of mind.***Nous aidons les propriétaires à louer plus rapidement en toute sérénité.",
-    image:
-      "https://na.rdcpix.com/9e0979d88a8ac5444966cf4cc11cfa73w-c428287539xd-w928_q80.jpg",
+    image: img_hero2,
   },
   {
     text: "Professional property management you can trust.***Une gestion locative professionnelle en toute confiance.",
-    image:
-      "https://static.wixstatic.com/media/420f35_1b6ceec079ae4ca3a5129aac207110e8~mv2.jpeg",
+    image: img_hero3,
   },
   {
     text: "Turn your property into a steady income stream.***Transformez votre bien en une source de revenus réguliers.",
-    image:
-      "https://alifeunfolding.com/wp-content/uploads/2025/03/Wood-Accent-wall-as-headboard-in-Short-term-Rental-1024x676.jpg",
+    image: img_hero4,
   },
 ];
 

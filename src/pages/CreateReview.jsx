@@ -119,7 +119,7 @@ const CreateReview = () => {
                 htmlFor="name"
                 className="block text-xs uppercase tracking-wider text-gray-700 mb-3"
               >
-                {t("Full Name***Nom et préno")}
+                {t("Full Name***Nom et prénom")}
               </label>
               <input
                 type="text"

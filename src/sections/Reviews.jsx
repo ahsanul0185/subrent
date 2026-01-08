@@ -119,9 +119,9 @@ const Reviews = () => {
           submitted ? <div className="bg-white flex items-center justify-center p-6">
         <div className="border border-gray-200 p-12 max-w-md w-full text-center">
           <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl font-light text-black mb-2">Thank You</h2>
+          <h2 className="text-2xl font-light text-black mb-2">{t("Thank You***Merci")}</h2>
           <p className="text-gray-500 text-sm">
-            Your review has been submitted
+            {t("Your review has been submitted***Votre avis client a bien été envoyé")}
           </p>
         </div>
       </div> : 
