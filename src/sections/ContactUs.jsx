@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Title from "../components/Title";
 import { useTranslation } from "../contexts/useTranslation";
-import { Phone, Mail, MapPin } from "lucide-react";
 import Button from "../components/Button";
 import img from '../assets/contact-us.jpg'
 import {motion} from 'motion/react'
+import { submitContactForm } from "../firebase/actions";
 
 const ContactUs = () => {
   const { t } = useTranslation();
@@ -13,6 +13,8 @@ const ContactUs = () => {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,9 +23,22 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("Form submitted:", formData);
-    // alert("Visit request submitted successfully!");
+    setLoading(true);
+    const res = await submitContactForm(formData)
+    setLoading(false);
+    if (res.success) {
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -74,12 +89,16 @@ const ContactUs = () => {
             </div>
 
             {/* Submit Button */}
-            <Button
+            <div>
+              <Button
               onClick={handleSubmit}
               className="md:text-sm mt-0"
+              disabled={loading}
             >
-              {t("Send Message***Envoyer un message")}
+              {t(loading ? "Sending...***Envoi en cours" : "Send Message***Envoyer un message")}
             </Button>
+            {submitted && <p className="text-sm text-primary mt-2">{t("Message sent successfully***Message envoyé avec succès")}</p>}
+            </div>
           </div>
         </motion.div>
 

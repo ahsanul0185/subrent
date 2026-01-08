@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { FileText, Plus, LogOut } from "lucide-react";
+import { LuMessageSquareText } from "react-icons/lu";
 import logo from "/logo-1.jpeg";
 import { auth } from "../firebase/firebase";
 import { signOut } from "firebase/auth";
@@ -10,6 +11,7 @@ const DashSidebar = () => {
   const navItems = [
     { path: "/dashboard/reviews", icon: FileText, label: "Reviews" },
     { path: "/dashboard/create-review", icon: Plus, label: "Create Review" },
+    { path: "/dashboard/form-submissions", icon: LuMessageSquareText , label: "Form Submissions" },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -18,7 +20,7 @@ const DashSidebar = () => {
     signOut(auth)
       .then(() => {
         toast.success("Logged out");
-        window.location.href = "/"; // or use React Router's useNavigate
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Logout error:", error);

@@ -1,10 +1,11 @@
 import { GoArrowRight } from "react-icons/go";
 import { twMerge } from "tailwind-merge";
 
-const Button = ({ arrow = true, onClick, className, children }) => {
+const Button = ({ arrow = true, onClick, className, children, disabled }) => {
   return (
     <button
     onClick={onClick}
+      disabled={disabled}
       className={twMerge(`not-first:uppercase text-sm md:text-base relative tracking-widest px-3.5 md:px-4 mt-5 py-2 md:py-3  bg-gray-200 group z-0 cursor-pointer hover:text-white duration-300`, className)}
     >
       <span

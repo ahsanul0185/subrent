@@ -104,3 +104,58 @@ export const updateReview = async (id, updatedData) => {
     return { success: false, error: error.message };
   }
 };
+
+
+
+export const submitContactForm = async (data) => {
+  try {
+    const docRef = await addDoc(collection(db, "form-submissions"), {
+      ...data,
+      createdAt: serverTimestamp()
+    })
+
+    return {
+      success: true,
+      id: docRef.id
+    }
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message || "Failed to submit form")
+    return {
+      success: false,
+      error: error.message || error
+    }
+  }
+}
+
+
+export const getAllFormSubmissions = async () => {
+  try {
+     const snapshot = await getDocs(collection(db, "form-submissions"))
+       return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message || "Failed to get form submissions")
+    return {
+      success: false,
+      error: error.message || error
+    }
+  }
+
+}
+
+
+export const deleteFormSubmission = async (id) => {
+  try {
+    await deleteDoc(doc(db, "form-submissions", id));
+    toast.success("Form submission deleted");
+    return { success: true };
+  } catch (error) {
+    console.error("Delete failed:", error);
+    toast.error("Failed to delete submission");
+    return { success: false, error: error.message };
+  }
+};

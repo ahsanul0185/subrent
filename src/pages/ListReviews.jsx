@@ -80,7 +80,7 @@ const handleDelete = async (id) => {
   }
 
   return (
-    <div className="p-8 overflow-x-auto">
+    <div className="p-8 overflow-x-auto mx-auto w-full">
       <div className="flex">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Reviews</h1>
 
@@ -164,14 +164,14 @@ const handleDelete = async (id) => {
                         <>
                           <button
                             onClick={() => handleApprove(review.id)}
-                            className="p-2 bg-gray-200 text-black hover:bg-zinc-800 hover:text-white transition-colors"
+                            className="p-2 bg-green-400 text-black hover:bg-green-700 hover:text-white transition-colors"
                             title="Approve"
                           >
                             <Check size={16} />
                           </button>
                           <button
                             onClick={() => handleReject(review.id)}
-                            className="p-2 bg-gray-200 text-black hover:bg-zinc-800 hover:text-white transition-colors"
+                            className="p-2 bg-red-400 text-white hover:bg-red-700 hover:text-white transition-colors"
                             title="Reject"
                           >
                             <X size={16} />

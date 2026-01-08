@@ -8,6 +8,7 @@ import PrivateRoute from "./components/PrivateRoutes";
 import ListReviews from "./pages/ListReviews";
 import CreateReview from "./pages/CreateReview";
 import UpdateReview from "./pages/UpdateReview";
+import FormSubmissions from "./pages/FormSubmissions";
 
 const App = () => {
   useLenis();
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="reviews" element={<ListReviews />} />
           <Route path="create-review" element={<CreateReview />} />
           <Route path="update-review/:id" element={<UpdateReview />} />
+          <Route path="form-submissions" element={<FormSubmissions />} />
         </Route>
       </Routes>
       <Toaster position="top-center" />
